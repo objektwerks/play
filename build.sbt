@@ -6,8 +6,16 @@ scalaVersion := "2.13.3"
 lazy val root = (project in file("."))
                 .enablePlugins(PlayScala)
 
-libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+libraryDependencies ++= {
+  val silencerVersion = "1.7.0"
+  Seq(
+    compilerPlugin("com.github.ghik" % "silencer-plugin" % silencerVersion cross CrossVersion.full),
+    "com.github.ghik" % "silencer-lib" % silencerVersion % Provided cross CrossVersion.full,
+    guice,
+    "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+  )
+}
 
-scalacOptions += s"-Wconf:src=${baseDirectory.value.getCanonicalPath}/app/views/*.scala.html&cat=unused-imports:silent"
-scalacOptions += s"-Wconf:src=${baseDirectory.value.getCanonicalPath}/target/scala-2.13/twirl/main/views/html/*.template.scala&cat=unused-imports:silent"
+scalacOptions += "-P:silencer:pathFilters=app/views/.*" 
+scalacOptions += "-P:silencer:pathFilters=target/.*" 
+scalacOptions += s"-P:silencer:sourceRoots=${baseDirectory.value.getCanonicalPath}"
