@@ -10,3 +10,7 @@ Dev
 4. run => ( http://localhost:9000 ) => edit ( site is auto-redeployed )
 5. enter
 6. exit
+
+Test
+----
+1. sbt clean test
