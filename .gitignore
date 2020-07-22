@@ -1,6 +1,7 @@
 .g8
 .bloop
 .metals
+.cache
 /.idea
 /.idea_modules
 /.settings
@@ -8,6 +9,8 @@ project/metals.sbt
 project/project
 project/target
 target
+tmp
+dist
 logs
 /RUNNING_PID
 .DS_Store
