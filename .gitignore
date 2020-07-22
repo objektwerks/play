@@ -1,0 +1,12 @@
+logs
+target
+/.idea
+/.idea_modules
+/.settings
+/RUNNING_PID
+.g8
+.bloop
+.metals
+project/metals.sbt
+project/project
+project/target
