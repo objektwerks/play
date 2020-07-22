@@ -16,6 +16,8 @@ libraryDependencies ++= {
   )
 }
 
-scalacOptions += "-P:silencer:pathFilters=app/views/.*" 
-scalacOptions += "-P:silencer:pathFilters=target/.*" 
-scalacOptions += s"-P:silencer:sourceRoots=${baseDirectory.value.getCanonicalPath}"
+scalacOptions ++= Seq(
+  "-P:silencer:pathFilters=app/views/.*",
+  "-P:silencer:pathFilters=target/.*",
+  s"-P:silencer:sourceRoots=${baseDirectory.value.getCanonicalPath}"
+)
