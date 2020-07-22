@@ -5,9 +5,11 @@ scalaVersion := "2.13.3"
 
 lazy val root = (project in file("."))
                 .enablePlugins(PlayScala)
-                
+
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+
+scalacOptions += "-Wconf:cat=unused-imports:s,src=app/views/*.scala.html:s"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "objektwerks.controllers._"
