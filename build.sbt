@@ -8,3 +8,6 @@ lazy val root = (project in file("."))
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+
+scalacOptions += s"-Wconf:src=${baseDirectory.value.getCanonicalPath}/app/views/*.scala.html&cat=unused-imports:silent"
+scalacOptions += s"-Wconf:src=${baseDirectory.value.getCanonicalPath}/target/scala-2.13/twirl/main/views/html/*.template.scala&cat=unused-imports:silent"
