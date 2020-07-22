@@ -8,11 +8,3 @@ lazy val root = (project in file("."))
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
-
-scalacOptions += "-Wconf:src=app/views/*.scala.html:s,cat=unused-imports:s"
-
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += "objektwerks.controllers._"
-
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += "objektwerks.binders._"
