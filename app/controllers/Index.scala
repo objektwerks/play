@@ -8,7 +8,7 @@ import play.api.mvc._
 @Singleton
 class Index @Inject()(val controllerComponents: ControllerComponents) extends BaseController with Logging {
   def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    logger.info(s"*** index request: $request")
+    logger.info(s"*** Index controller request: $request")
     Ok(views.html.index())
   }
 }
