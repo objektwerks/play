@@ -7,7 +7,7 @@ import play.api.test.Helpers._
 
 class IndexTest extends PlaySpec with GuiceOneAppPerTest with Injecting {
   val contentTextHtml = "text/html"
-  val content = "Hello, Play!"
+  val content = "Todos"
   
   "HomeController GET" should {
     "render the index page from a new instance of controller" in {
