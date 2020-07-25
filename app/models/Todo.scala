@@ -1,21 +1,20 @@
 package models
 
-final case class Todo(task: String, done: Boolean = false)
+final case class Todo(task: String)
 
 object Todo {
   import play.api.data.Form
   import play.api.data.Forms._
 
-  private val todos = List.empty[Todo]
+  private val todos = Set.empty[Todo]
 
   val todoForm = Form(
     mapping(
-      "task" -> nonEmptyText,
-      "done"  -> boolean
+      "task" -> nonEmptyText
     )(Todo.apply)(Todo.unapply)
   )
 
-  def add(todo: Todo): List[Todo] = todos :+ todo
+  def add(todo: Todo): Set[Todo] = todos + todo
 
-  def list(): List[Todo] = todos
+  def list(): Set[Todo] = todos
 }
