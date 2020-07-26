@@ -8,10 +8,12 @@ import play.api.mvc._
 import models._
 
 @Singleton
-class IndexController @Inject()(val messagesAction: MessagesActionBuilder,  val controllerComponents: ControllerComponents)
-  extends BaseController with Logging {
+class IndexController @Inject()(val messagesAction: MessagesActionBuilder,
+                                val cc: MessagesControllerComponents)
+  extends MessagesAbstractController(cc)
+  with Logging {
   def index() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
-    logger.info(s"*** Index controller request: $request")
+    logger.info(s"*** IndexController request: $request")
     Ok(views.html.index(Todo.todoForm, Todo.list))
   }
 }
