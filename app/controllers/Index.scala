@@ -11,6 +11,6 @@ import models._
 class Index @Inject()(val controllerComponents: ControllerComponents) extends BaseController with Logging {
   def index() = Action { implicit request: Request[AnyContent] =>
     logger.info(s"*** Index controller request: $request")
-    Ok(views.html.index(Todo.list))
+    Ok(views.html.index(Todo.todoForm, Todo.list))
   }
 }

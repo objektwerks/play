@@ -1,6 +1,10 @@
-@(todos: Set[Todo])()
+@(todoForm: Form[Todo], todos: Set[Todo])()
 
 @main("Todos") {
+  <h1>Add Todo</h1>
+  @helper.form(action = controllers.TodoController.add()) {
+    @helper.inputText(todoForm("task"))
+  }
   <h1>Todos [@todos.size]</h1>
   <ul>
     @for(todo <- todos) {
