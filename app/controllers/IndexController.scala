@@ -8,8 +8,8 @@ import play.api.mvc._
 import models._
 
 @Singleton
-class IndexController @Inject()(val messagesAction: MessagesActionBuilder,
-                                val messagesController: MessagesControllerComponents)
+class IndexController @Inject()(messagesAction: MessagesActionBuilder,
+                                messagesController: MessagesControllerComponents)
   extends MessagesAbstractController(messagesController)
   with Logging {
   def index() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
