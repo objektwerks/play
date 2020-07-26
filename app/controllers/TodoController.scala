@@ -10,6 +10,6 @@ class TodoController @Inject()(val messagesAction: MessagesActionBuilder,  val c
   extends MessagesAbstractController(cc) with Logging {
   def add() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
     logger.info(s"*** Todo controller request: $request")
-    Redirect(routes.Index.index())
+    Redirect(routes.IndexController.index())
   }
 }

@@ -4,7 +4,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.Index.index()
+GET     /                           controllers.IndexController.index()
 GET    /todos/add                   controllers.TodoController.add()
 
 # Map static resources from the /public folder to the /assets URL path
