@@ -1,9 +1,10 @@
 @(todoForm: Form[Todo], todos: Set[Todo])(implicit request: MessagesRequestHeader)
 
 @main("Todos") {
-  <h1>Add Todo</h1>
+  <h1>Todo</h1>
   @helper.form(action = routes.TodoController.add()) {
     @helper.inputText(todoForm("task"))
+    <button>Add</button>
   }
   <h1>Todos [@todos.size]</h1>
   <ul>
