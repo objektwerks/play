@@ -7,8 +7,8 @@ import play.api.mvc._
 
 @Singleton
 class TodoController @Inject()(val messagesAction: MessagesActionBuilder,
-                               val cc: MessagesControllerComponents)
-  extends MessagesAbstractController(cc)
+                               val messagesController: MessagesControllerComponents)
+  extends MessagesAbstractController(messagesController)
   with Logging {
   def add() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
     logger.info(s"*** TodoController request: $request")

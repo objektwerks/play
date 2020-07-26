@@ -9,8 +9,8 @@ import models._
 
 @Singleton
 class IndexController @Inject()(val messagesAction: MessagesActionBuilder,
-                                val cc: MessagesControllerComponents)
-  extends MessagesAbstractController(cc)
+                                val messagesController: MessagesControllerComponents)
+  extends MessagesAbstractController(messagesController)
   with Logging {
   def index() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
     logger.info(s"*** IndexController request: $request")
