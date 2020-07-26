@@ -1,5 +1,10 @@
-@()
+@(todos: Set[Todo])()
 
 @main("Todos") {
-  <h1>Todos</h1>
+  <h1>Todos [ @todos.size ]</h1>
+  <ul>
+    @for(todo <- todos) {
+      <li>@todo.task</li>
+    }
+  </ul>
 }

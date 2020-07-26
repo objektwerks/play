@@ -18,5 +18,5 @@ object Todo {
 
   def remove(todo: Todo): Set[Todo] = todos - todo
 
-  def list(): Set[Todo] = todos
+  def list: Set[Todo] = todos
 }
