@@ -6,7 +6,7 @@ object Todo {
   import play.api.data.Form
   import play.api.data.Forms._
 
-  private val todos = Set.empty[Todo]
+  private var todos = Set.empty[Todo]
 
   val todoForm = Form(
     mapping(
@@ -14,9 +14,13 @@ object Todo {
     )(Todo.apply)(Todo.unapply)
   )
 
-  def add(todo: Todo): Set[Todo] = todos + todo
+  def add(todo: Todo): Unit = {
+    todos = todos + todo
+  }
 
-  def remove(todo: Todo): Set[Todo] = todos - todo
+  def remove(todo: Todo): Unit = {
+    todos = todos - todo
+  }
 
   def list: Set[Todo] = todos
 }

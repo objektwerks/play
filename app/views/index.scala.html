@@ -3,6 +3,7 @@
 @main("Todos") {
   <h1>Todo</h1>
   @helper.form(action = routes.TodoController.add()) {
+    @helper.CSRF.formField
     @helper.inputText(todoForm("task"))
     <button>Add</button>
   }
