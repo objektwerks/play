@@ -1,16 +1,24 @@
 @(todoForm: Form[Todo], todos: Set[Todo])(implicit request: MessagesRequestHeader)
 
 @main("Todos") {
-  <h1>Todo</h1>
-  @helper.form(action = routes.TodoController.add()) {
-    @helper.CSRF.formField
-    @helper.inputText(todoForm("task"))
-    <button>Add</button>
-  }
-  <h1>Todos [@todos.size]</h1>
-  <ul>
-    @for(todo <- todos) {
-      <li>@todo.task</li>
+  <div class="w3-container w3-indigo">
+    <h3>Todo</h3>
+  </div>
+  <div>
+    @helper.form(action = routes.TodoController.add()) {
+      @helper.CSRF.formField
+      @helper.inputText(todoForm("task"))
+      <button class="w3-button w3-round">Add</button>
     }
-  </ul>
+  </div>
+  <div class="w3-container w3-indigo">
+    <h3>Todos [@todos.size]</h3>
+  </div>
+  <div>
+    <ul class="w3-ul w3-hoverable">
+      @for(todo <- todos) {
+        <li>@todo.task</li>
+      }
+    </ul>
+  </div>
 }
