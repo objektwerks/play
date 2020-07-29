@@ -1,4 +1,4 @@
-package app
+package test
 
 import org.scalatest.funsuite.AnyFunSuite
 
