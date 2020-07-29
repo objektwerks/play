@@ -9,9 +9,9 @@ object FutureExtensions {
   import scala.concurrent.duration._
 
   implicit class Extensions[T](future: Future[T]) {
-    def withTimeout(timeout: => Throwable)
-                   (implicit duration: FiniteDuration, system: ActorSystem, ec: ExecutionContext): Future[T] = {
-      Future.firstCompletedOf(Seq(future, after(duration, system.scheduler)(Future.failed(timeout))))
+    def withTimeout(futureFailed: => Throwable)
+                   (implicit timeout: FiniteDuration, system: ActorSystem, ec: ExecutionContext): Future[T] = {
+      Future.firstCompletedOf(Seq(future, after(timeout, system.scheduler)(Future.failed(futureFailed))))
     }
   }
 
@@ -31,7 +31,7 @@ object FutureExtensions {
   }
 }
 
-class TimeoutFutureTest extends AnyFunSuite {
+class FutureExtensionsTest extends AnyFunSuite {
   import scala.concurrent.ExecutionContext.Implicits.global
   import scala.concurrent.duration._
   import scala.language.postfixOps
