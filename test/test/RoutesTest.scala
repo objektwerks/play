@@ -2,9 +2,8 @@ package test
 
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice._
-
-import play.api.test._
 import play.api.test.Helpers._
+import play.api.test._
 
 class RoutesTest extends PlaySpec with GuiceOneAppPerTest {
   "GET /" should {
