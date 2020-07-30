@@ -22,5 +22,3 @@ scalacOptions ++= Seq(
   "-P:silencer:pathFilters=target/.*",
   s"-P:silencer:sourceRoots=${baseDirectory.value.getCanonicalPath}"
 )
-
-Test / resourceDirectory := baseDirectory.value / "test" / "resources"
