@@ -17,8 +17,8 @@ import scala.util.{Failure, Success}
 import FutureExtensions._
 
 class FutureExtensionsTest extends AnyFunSuite with Matchers {
-  private val testConfig = ConfigFactory.load("test.conf")
-  private val akkaActorFutureExtensionsDispatcher = Option("akka.actor.future-extensions-dispatcher")
+  val testConfig = ConfigFactory.load("test.conf")
+  val akkaActorFutureExtensionsDispatcher = Option("akka.actor.future-extensions-dispatcher")
 
   test("future with timeout > success") {
     withTimeout(config = testConfig,
@@ -56,10 +56,10 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
     }
   }
 
-  private def withTimeout(config: Config,
-                          dispatcherName: Option[String],
-                          akkaTimeout: FiniteDuration,
-                          futureSleep: FiniteDuration): Future[Boolean] = {
+  def withTimeout(config: Config,
+                  dispatcherName: Option[String],
+                  akkaTimeout: FiniteDuration,
+                  futureSleep: FiniteDuration): Future[Boolean] = {
     implicit val system = ActorSystem(UUID.randomUUID.toString, config)
     implicit val dispatcher = dispatcherName match {
       case Some(name) => system.dispatchers.lookup(name)
@@ -75,7 +75,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   }
 
   @tailrec
-  private def factorial(n: Long, acc: Long = 1): Long = n match {
+  final def factorial(n: Long, acc: Long = 1): Long = n match {
     case i if i < 1 => acc
     case _ => factorial(n - 1, acc * n)
   }
