@@ -56,9 +56,9 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   }
 
   private def withTimeout(config: Config,
-                   dispatcherName: Option[String],
-                   akkaTimeout: FiniteDuration,
-                   futureSleep: FiniteDuration): Future[Boolean] = {
+                          dispatcherName: Option[String],
+                          akkaTimeout: FiniteDuration,
+                          futureSleep: FiniteDuration): Future[Boolean] = {
     import FutureExtensions._
     implicit val system = ActorSystem("test", config)
     implicit val dispatcher = dispatcherName match {
