@@ -22,7 +22,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
 
   test("future with timeout > success") {
     withTimeout(config = testConfig,
-                dispatcherName = akkaActorFutureExtensionsDispatcher,
+                dispatcherPath = akkaActorFutureExtensionsDispatcher,
                 akkaTimeout = 3 seconds,
                 futureSleep = 2 seconds).onComplete {
       case Success(result) => result shouldBe true
@@ -32,7 +32,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
 
   test("future with timeout > failure") {
     withTimeout(config = testConfig,
-                dispatcherName = akkaActorFutureExtensionsDispatcher,
+                dispatcherPath = akkaActorFutureExtensionsDispatcher,
                 akkaTimeout = 2 seconds,
                 futureSleep = 3 seconds).onComplete {
       case Success(_) => fail
@@ -57,11 +57,11 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   }
 
   def withTimeout(config: Config,
-                  dispatcherName: Option[String],
+                  dispatcherPath: Option[String],
                   akkaTimeout: FiniteDuration,
                   futureSleep: FiniteDuration): Future[Boolean] = {
     implicit val system = ActorSystem(UUID.randomUUID.toString, config)
-    implicit val dispatcher = dispatcherName match {
+    implicit val dispatcher = dispatcherPath match {
       case Some(path) => system.dispatchers.lookup(path)
       case None => system.dispatcher
     }
