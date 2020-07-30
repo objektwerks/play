@@ -9,7 +9,9 @@ import scala.concurrent.duration._
 object FutureExtensions {
   implicit class Extensions[T](future: Future[T]) {
     def withTimeout(timeoutException: => Throwable)
-                   (implicit system: ActorSystem, ec: ExecutionContext, timeout: FiniteDuration): Future[T] = {
+                   (implicit system: ActorSystem,
+                    ec: ExecutionContext,
+                    timeout: FiniteDuration): Future[T] = {
       Future.firstCompletedOf(
         Seq(
           future,
