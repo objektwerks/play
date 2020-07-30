@@ -60,6 +60,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
                           akkaTimeout: FiniteDuration,
                           futureSleep: FiniteDuration): Future[Boolean] = {
     import FutureExtensions._
+
     implicit val system = ActorSystem("test", config)
     implicit val dispatcher = dispatcherName match {
       case Some(name) => system.dispatchers.lookup(name)
