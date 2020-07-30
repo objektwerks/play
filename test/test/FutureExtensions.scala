@@ -3,7 +3,6 @@ package test
 import akka.actor.ActorSystem
 import akka.pattern.after
 import scala.concurrent.{ExecutionContext, Future}
-import scala.concurrent._
 import scala.concurrent.duration._
 
 object FutureExtensions {
@@ -19,17 +18,5 @@ object FutureExtensions {
         )
       )
     }
-  }
-
-  def test(akkaTimeout: FiniteDuration, futureSleep: FiniteDuration): Future[Boolean] = {
-    implicit val system = ActorSystem("future-extensions")
-    implicit val dispatcher = system.dispatcher
-    implicit val timeout = akkaTimeout
-
-    lazy val future = Future {
-      Thread.sleep(futureSleep.toMillis)
-      true
-    }
-    future.withTimeout(new TimeoutException("Future timed out!"))
   }
 }
