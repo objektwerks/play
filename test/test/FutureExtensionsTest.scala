@@ -3,10 +3,8 @@ package test
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import scala.annotation.tailrec
-import scala.concurrent.{Future, TimeoutException}
-
 class FutureExtensionsTest extends AnyFunSuite with Matchers {
+  import scala.annotation.tailrec
   import scala.concurrent.ExecutionContext.Implicits.global
   import scala.concurrent.duration._
   import scala.language.postfixOps
@@ -28,6 +26,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
 
   test("future factorial > success") {
     import akka.actor.ActorSystem
+    import scala.concurrent._
     import FutureExtensions._
 
     implicit val system = ActorSystem("test")
