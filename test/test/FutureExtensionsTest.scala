@@ -34,10 +34,9 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
     implicit val dispatcher = system.dispatcher
     implicit val timeout = 3 seconds
 
-    lazy val future = Future {
+    Future {
       factorial(9)
-    }
-    future.withTimeout(new TimeoutException("Future timed out!")).onComplete {
+    }.withTimeout(new TimeoutException("Future timed out!")).onComplete {
       case Success(result) => result shouldBe 362880
       case Failure(_) => fail
     }
