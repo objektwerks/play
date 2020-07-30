@@ -43,7 +43,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   test("future factorial > success") {
     implicit val system = ActorSystem(UUID.randomUUID.toString, testConfig)
     implicit val dispatcher = akkaActorFutureExtensionsDispatcher match {
-      case Some(name) => system.dispatchers.lookup(name)
+      case Some(path) => system.dispatchers.lookup(path)
       case None => system.dispatcher
     }
     implicit val timeout = 3 seconds
@@ -62,7 +62,7 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
                   futureSleep: FiniteDuration): Future[Boolean] = {
     implicit val system = ActorSystem(UUID.randomUUID.toString, config)
     implicit val dispatcher = dispatcherName match {
-      case Some(name) => system.dispatchers.lookup(name)
+      case Some(path) => system.dispatchers.lookup(path)
       case None => system.dispatcher
     }
     implicit val timeout = akkaTimeout
