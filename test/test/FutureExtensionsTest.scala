@@ -1,26 +1,26 @@
 package test
 
 import akka.actor.ActorSystem
+
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
+
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import scala.annotation.tailrec
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
+import scala.concurrent.duration._
+import scala.language.postfixOps
+import scala.util.{Failure, Success}
+
+import FutureExtensions._
 
 class FutureExtensionsTest extends AnyFunSuite with Matchers {
-  import scala.annotation.tailrec
-  import scala.concurrent.ExecutionContext.Implicits.global
-  import scala.concurrent.duration._
-  import scala.language.postfixOps
-  import scala.util.{Failure, Success}
-
-  private val config = ConfigFactory.load("test.conf")
-  private val futureExtensionsDispatcherName = Some("future-extensions-dispatcher")
-
   test("future with timeout > success") {
-    withTimeout(config = config,
-                dispatcherName = futureExtensionsDispatcherName,
+    withTimeout(config = ConfigFactory.load("test.conf"),
+                dispatcherName = Option("future-extensions-dispatcher"),
                 akkaTimeout = 3 seconds,
                 futureSleep = 2 seconds).onComplete {
       case Success(result) => result shouldBe true
@@ -29,8 +29,8 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   }
 
   test("future with timeout > failure") {
-    withTimeout(config = config,
-                dispatcherName = futureExtensionsDispatcherName,
+    withTimeout(config = ConfigFactory.load("test.conf"),
+                dispatcherName = Option("future-extensions-dispatcher"),
                 akkaTimeout = 2 seconds,
                 futureSleep = 3 seconds).onComplete {
       case Success(_) => fail
@@ -39,12 +39,11 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
   }
 
   test("future factorial > success") {
-    import akka.actor.ActorSystem
-    import scala.concurrent._
-    import FutureExtensions._
-
-    implicit val system = ActorSystem("test", config)
-    implicit val dispatcher = system.dispatchers.lookup("future-extensions-dispatcher")
+    implicit val system = ActorSystem("test", ConfigFactory.load("test.conf"))
+    implicit val dispatcher = Option("future-extensions-dispatcher") match {
+      case Some(name) => system.dispatchers.lookup(name)
+      case None => system.dispatcher
+    }
     implicit val timeout = 3 seconds
 
     Future {
@@ -59,8 +58,6 @@ class FutureExtensionsTest extends AnyFunSuite with Matchers {
                           dispatcherName: Option[String],
                           akkaTimeout: FiniteDuration,
                           futureSleep: FiniteDuration): Future[Boolean] = {
-    import FutureExtensions._
-
     implicit val system = ActorSystem("test", config)
     implicit val dispatcher = dispatcherName match {
       case Some(name) => system.dispatchers.lookup(name)
