@@ -1,7 +1,8 @@
-package test
+package common
 
 import akka.actor.ActorSystem
 import akka.pattern.after
+
 import scala.concurrent.{ExecutionContext, Future}
 import scala.concurrent.duration._
 
