@@ -14,3 +14,7 @@ Dev
 Test
 ----
 1. sbt clean test
+
+Web Service
+-----------
+* url = "http://api.icndb.com/jokes/random/"
