@@ -12,6 +12,7 @@ libraryDependencies ++= {
     compilerPlugin("com.github.ghik" % "silencer-plugin" % silencerVersion cross CrossVersion.full),
     "com.github.ghik" % "silencer-lib" % silencerVersion % Provided cross CrossVersion.full,
     guice,
+    ws,
     "com.typesafe" % "config" % "1.4.0" % Test,
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
   )
