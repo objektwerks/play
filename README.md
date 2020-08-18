@@ -17,4 +17,4 @@ Test
 
 Web Service
 -----------
-* url = "http://api.icndb.com/jokes/random/"
+>WSClient test url: "http://api.icndb.com/jokes/random/"
