@@ -3,8 +3,8 @@ package future
 import akka.actor.ActorSystem
 import akka.pattern.after
 
-import scala.concurrent.{ExecutionContext, Future}
 import scala.concurrent.duration._
+import scala.concurrent.{ExecutionContext, Future}
 
 object FutureExtensions {
   implicit class Extensions[T](future: Future[T]) {
