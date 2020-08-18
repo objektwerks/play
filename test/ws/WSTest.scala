@@ -1,9 +1,9 @@
-package test
+package ws
 
-import play.api.libs.ws.WSClient
-import org.scalatestplus.play.PlaySpec
 import org.scalatest.concurrent.ScalaFutures
+import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.guice.GuiceOneServerPerSuite
+import play.api.libs.ws.WSClient
 
 import scala.concurrent._
 import scala.concurrent.duration._

@@ -1,4 +1,4 @@
-package test
+package route
 
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice._

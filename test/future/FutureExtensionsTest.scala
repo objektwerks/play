@@ -1,12 +1,10 @@
-package test
+package future
 
 import java.util.UUID
 
 import akka.actor.ActorSystem
-
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigFactory
-
+import com.typesafe.config.{Config, ConfigFactory}
+import future.FutureExtensions._
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
@@ -16,8 +14,6 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 import scala.util.{Failure, Success}
-
-import common.FutureExtensions._
 
 class FutureExtensionsTest extends AnyFunSuite with Matchers {
   val testConfig = ConfigFactory.load("test.conf")

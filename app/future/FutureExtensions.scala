@@ -1,4 +1,4 @@
-package common
+package future
 
 import akka.actor.ActorSystem
 import akka.pattern.after
