@@ -1,13 +1,10 @@
 .*
-!/.gitignore
-project/.bloop
+!.gitignore
 project/metals.sbt
 project/project/
 project/target/
 target/
-.DS_Store
 .g8
 dist
 logs
 /RUNNING_PID
-.DS_Store
