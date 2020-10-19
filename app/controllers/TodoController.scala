@@ -14,7 +14,7 @@ class TodoController @Inject()(messagesAction: MessagesActionBuilder,
   with Logging {
   def add() = messagesAction { implicit request: MessagesRequest[AnyContent] =>
     logger.info(s"*** TodoController request: $request")
-    Todo.todoForm.bindFromRequest.fold(
+    Todo.todoForm.bindFromRequest().fold(
       formWithErrors => {
         logger.info(s"*** TodoController errors: $formWithErrors")
         BadRequest(views.html.index(formWithErrors, Todo.list))

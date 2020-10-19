@@ -15,7 +15,7 @@ class WSTest extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures {
 
   "ws call" must {
     "get joke" in {
-      val response = wsClient.url("http://api.icndb.com/jokes/random/").get
+      val response = wsClient.url("http://api.icndb.com/jokes/random/").get()
       val body = Await.result(response, 3 seconds).body
       println(body)
       assert(body.nonEmpty)
