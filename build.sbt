@@ -2,10 +2,8 @@ name := "play"
 organization := "objektwerks"
 version := "1.0-SNAPSHOT"
 scalaVersion := "2.13.4"
-
 lazy val root = (project in file("."))
                 .enablePlugins(PlayScala)
-
 libraryDependencies ++= {
   val silencerVersion = "1.7.0"
   Seq(
@@ -19,7 +17,6 @@ libraryDependencies ++= {
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
   )
 }
-
 scalacOptions ++= Seq(
   "-P:silencer:pathFilters=app/views/.*",
   "-P:silencer:pathFilters=target/.*",
