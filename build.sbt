@@ -13,7 +13,7 @@ libraryDependencies ++= {
     ws,
     "org.playframework.anorm" %% "anorm" % "2.6.10" % Test,
     "com.h2database" % "h2" % "1.4.200" % Test,
-    "com.typesafe" % "config" % "1.4.0" % Test,
+    "com.typesafe" % "config" % "1.4.1" % Test,
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
   )
 }
