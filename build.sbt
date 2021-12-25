@@ -12,7 +12,7 @@ libraryDependencies ++= {
     guice,
     ws,
     "org.playframework.anorm" %% "anorm" % "2.6.10" % Test,
-    "com.h2database" % "h2" % "2.0.202" % Test,
+    "com.h2database" % "h2" % "2.0.204" % Test,
     "com.typesafe" % "config" % "1.4.1" % Test,
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
   )
