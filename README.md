@@ -1,6 +1,6 @@
 Play
 ----
->Exploratory Play app. Also includes Anorm, WSClient and FutureExtensions.
+>Exploratory Play app. Also includes Anorm, H2, WSClient and FutureExtensions.
 
 Dev
 ---
