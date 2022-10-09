@@ -1,7 +1,7 @@
 name := "play"
 organization := "objektwerks"
 version := "1.0-SNAPSHOT"
-scalaVersion := "2.13.9"
+scalaVersion := "2.13.10"
 lazy val root = (project in file("."))
                 .enablePlugins(PlayScala)
 libraryDependencies ++= {
