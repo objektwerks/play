@@ -11,7 +11,7 @@ libraryDependencies ++= {
     "com.github.ghik" % "silencer-lib" % silencerVersion % Provided cross CrossVersion.full,
     guice,
     ws,
-    "org.playframework.anorm" %% "anorm" % "2.6.10" % Test,
+    "org.playframework.anorm" %% "anorm" % "2.7.0" % Test,
     "com.h2database" % "h2" % "2.1.220" % Test,
     "com.typesafe" % "config" % "1.4.2" % Test,
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
