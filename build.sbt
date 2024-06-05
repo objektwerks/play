@@ -5,7 +5,7 @@ scalaVersion := "2.13.14"
 lazy val root = (project in file("."))
                 .enablePlugins(PlayScala)
 libraryDependencies ++= {
-  val silencerVersion = "1.7.15"
+  val silencerVersion = "1.7.16"
   Seq(
     compilerPlugin("com.github.ghik" % "silencer-plugin" % silencerVersion cross CrossVersion.full),
     "com.github.ghik" % "silencer-lib" % silencerVersion % Provided cross CrossVersion.full,
