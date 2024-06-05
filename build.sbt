@@ -14,7 +14,7 @@ libraryDependencies ++= {
     "org.playframework.anorm" %% "anorm" % "2.7.0" % Test,
     "com.h2database" % "h2" % "2.2.224" % Test,
     "com.typesafe" % "config" % "1.4.3" % Test,
-    "org.scalatestplus.play" %% "scalatestplus-play" % "6.0.1" % Test
+    "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test
   )
 }
 scalacOptions ++= Seq(
